@@ -3,8 +3,8 @@ import { NFTItem } from './(components)/Nftcard';
 
 const NFT_LIST: NFTItem[] = [
   {
-    contractAddress: '0x31fb4083b0a3617ca645041ff4f33ab8f3298cdb',
-    tokenId: '130',
+    contractAddress: '0x31Fb4083B0A3617ca645041FF4F33Ab8F3298cDB',
+    tokenId: '10',
   },
 ];
 

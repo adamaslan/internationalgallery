@@ -1,6 +1,6 @@
 "use client";
 
-import NFTCard, { NFTItem } from './Nftcard';
+import NFTCard, { NFTItem } from './NFTCard';
 
 interface NFTGalleryProps {
   nfts: NFTItem[];
