@@ -25,3 +25,24 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+@keyframes pixelate {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(2px,2px); }
+  100% { transform: translate(0,0); }
+}
+
+.shadow-retro {
+  box-shadow: 8px 8px 0px #000;
+}
+
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
+}
