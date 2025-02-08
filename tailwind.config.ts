@@ -8,13 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        pixel: ['"Press Start 2P"', 'cursive'],
+      },
+      colors: {
+        'retro-pink': '#ff69f7',
+        'retro-blue': '#00a2ff',
+        'retro-green': '#00ff00',
+        'retro-yellow': '#fff200',
       },
     },
   },
-  plugins: [],
 }
-export default config
+
+export default config;
