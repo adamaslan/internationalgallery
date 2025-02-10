@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { Navbar } from './(components)/Navbar';
+import {GalleryHeader} from './(components)/Header';
 
 interface NFT {
   identifier: string;
@@ -64,90 +66,116 @@ export default function NFTDisplay() {
     fetchNFT();
   }, []);
 
-  // Loading and error states remain the same...
-
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl text-center mb-8 font-pixel text-retro-pink">
-        The International Gallery NFT of the Month
-      </h1>
-      
-      <div className="bg-retro-beige border-4 border-black p-4 shadow-retro">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* NFT Image */}
-          <div className="aspect-square border-4 border-black bg-retro-blue overflow-hidden pixel-art">
-            <img
-              src={nft?.image_url}
-              alt={nft?.name}
-              className="w-full h-full object-cover pixelated"
-            />
-          </div>
-
-          {/* NFT Details */}
-          <div className="space-y-4">
-            <div className="border-4 border-black bg-retro-yellow p-2">
-              <h1 className="text-2xl font-pixel text-black">{nft?.name}</h1>
-            </div>
-            
-            <div className="border-4 border-black bg-retro-green p-2">
-              <p className="font-pixel text-sm text-black">{nft?.description}</p>
-            </div>
-
-            {/* Additional Details */}
-            <div className="space-y-2">
-              <div className="border-4 border-black bg-retro-red p-2">
-                <h2 className="text-xl font-pixel text-black">DETAILS</h2>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+      <Navbar />
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Main Content - 2/3 width */}
+        <div className="w-full lg:w-2/3">
+        <GalleryHeader />
+          <div className="bg-retro-beige border-4 border-black p-4 shadow-retro">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* NFT Image */}
+              <div className="aspect-square border-4 border-black bg-retro-blue overflow-hidden pixel-art">
+                <img
+                  src={nft?.image_url}
+                  alt={nft?.name}
+                  className="w-full h-full object-cover pixelated"
+                />
               </div>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="border-4 border-black bg-retro-purple p-2">
-                  <div className="text-md font-pixel text-retro-pink">Collection</div>
-                  <div className="text-sm font-pixel text-white">{nft?.collection}</div>
+
+              {/* NFT Details */}
+              <div className="space-y-4">
+                <div className="border-4 border-black bg-retro-yellow p-2">
+                  <h1 className="text-2xl font-pixel text-black">{nft?.name}</h1>
                 </div>
-                <div className="border-4 border-black bg-retro-purple p-2">
-                  <div className="text-md font-pixel text-retro-pink">Contract</div>
-                  <div className="text-sm font-pixel text-white break-all">{nft?.contract}</div>
+                
+                <div className="border-4 border-black bg-retro-green p-2">
+                  <p className="font-pixel text-sm text-black">{nft?.description}</p>
                 </div>
-                <div className="border-4 border-black bg-retro-purple p-2">
-                  <div className="text-md font-pixel text-retro-pink">Standard</div>
-                  <div className="text-sm font-pixel text-white">{nft?.token_standard}</div>
-                </div>
-                <div className="border-4 border-black bg-retro-purple p-2">
-                  <div className="text-md font-pixel text-retro-pink">Creator</div>
-                  <div className="text-sm font-pixel text-white break-all">{nft?.creator}</div>
-                </div>
-                <div className="border-4 border-black bg-retro-purple p-2">
-                  <div className="text-md font-pixel text-retro-pink">Owner</div>
-                  <div className="text-sm font-pixel text-white break-all">
-                    {nft?.owners[0]?.address}
+
+                {/* Additional Details */}
+                <div className="space-y-2">
+                  <div className="border-4 border-black bg-retro-red p-2">
+                    <h2 className="text-xl font-pixel text-black">DETAILS</h2>
                   </div>
-                </div>
-                <div className="border-4 border-black bg-retro-purple p-2">
-                  <div className="text-md font-pixel text-retro-pink">Token ID</div>
-                  <div className="text-sm font-pixel text-white">{nft?.identifier}</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Traits */}
-            <div className="space-y-2">
-              <div className="border-4 border-black bg-retro-red p-2">
-                <h2 className="text-xl font-pixel text-black">PROPERTIES</h2>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                {nft?.traits.map((trait, index) => (
-                  <div
-                    key={index}
-                    className="border-4 border-black bg-retro-purple p-2"
-                  >
-                    <div className="text-md font-pixel text-retro-pink">{trait.trait_type}</div>
-                    <div className="text-sm font-pixel text-white">{trait.value}</div>
-                    {trait.percentile && (
-                      <div className="text-xxs font-pixel text-retro-green mt-1">
-                        TOP {trait.percentile.toFixed(1)}%
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="border-4 border-black bg-retro-purple p-2">
+                      <div className="text-md font-pixel text-retro-pink">Collection</div>
+                      <div className="text-sm font-pixel text-black">{nft?.collection}</div>
+                    </div>
+                    <div className="border-4 border-black bg-retro-purple p-2">
+                      <div className="text-md font-pixel text-retro-pink">Contract</div>
+                      <div className="text-sm font-pixel text-black break-all">{nft?.contract}</div>
+                    </div>
+                    <div className="border-4 border-black bg-retro-purple p-2">
+                      <div className="text-md font-pixel text-retro-pink">Standard</div>
+                      <div className="text-sm font-pixel text-black">{nft?.token_standard}</div>
+                    </div>
+                    <div className="border-4 border-black bg-retro-purple p-2">
+                      <div className="text-md font-pixel text-retro-pink">Creator</div>
+                      <div className="text-sm font-pixel text-black break-all">{nft?.creator}</div>
+                    </div>
+                    <div className="border-4 border-black bg-retro-purple p-2">
+                      <div className="text-md font-pixel text-retro-pink">Owner</div>
+                      <div className="text-sm font-pixel text-black break-all">
+                        {nft?.owners[0]?.address}
                       </div>
-                    )}
+                    </div>
+                    <div className="border-4 border-black bg-retro-purple p-2">
+                      <div className="text-md font-pixel text-retro-pink">Token ID</div>
+                      <div className="text-sm font-pixel text-black">{nft?.identifier}</div>
+                    </div>
                   </div>
-                ))}
+                </div>
+
+                {/* Traits */}
+                <div className="space-y-2">
+                  <div className="border-4 border-black bg-retro-red p-2">
+                    <h2 className="text-xl font-pixel text-black">PROPERTIES</h2>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {nft?.traits.map((trait, index) => (
+                      <div
+                        key={index}
+                        className="border-4 border-black bg-retro-purple p-2"
+                      >
+                        <div className="text-md font-pixel text-retro-pink">{trait.trait_type}</div>
+                        <div className="text-sm font-pixel text-black">{trait.value}</div>
+                        {trait.percentile && (
+                          <div className="text-xxs font-pixel text-retro-green mt-1">
+                            TOP {trait.percentile.toFixed(1)}%
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Ad Section - 1/3 width */}
+        <div className="w-full lg:w-1/3">
+          <div className="sticky top-24">
+            <div className="bg-retro-beige border-4 border-black p-4 shadow-retro mb-4">
+              <h2 className="text-xl font-pixel text-retro-pink mb-4">Sponsored</h2>
+              <div className="aspect-square bg-retro-blue border-4 border-black flex items-center justify-center pixel-art">
+                <p className="font-pixel text-black text-center p-4">
+                  Advertise Here<br />
+                  (300x300)
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-retro-beige border-4 border-black p-4 shadow-retro">
+              <h2 className="text-xl font-pixel text-retro-pink mb-4">Featured</h2>
+              <div className="aspect-video bg-retro-green border-4 border-black flex items-center justify-center pixel-art">
+                <p className="font-pixel text-black text-center p-4">
+                  Banner Ad<br />
+                  (300x600)
+                </p>
               </div>
             </div>
           </div>
